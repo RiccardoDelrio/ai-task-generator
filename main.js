@@ -8,6 +8,7 @@ let theNumber = 0
 addEl.addEventListener("click", () => {
     theNumber += 1
     console.log(theNumber);
+    updateNumber()
     numberEl.innerHTML = `${theNumber}`
     if (theNumber > 0) {
         lessEl.classList.remove("disabled")
@@ -27,7 +28,7 @@ lessEl.addEventListener("click", () => {
         lessEl.classList.add("disabled")
         resetEl.classList.add("disabled")
     }
-    if (theNumber % 10 === 0) {
+    if (theNumber % 10 === 0 && theNumber != 0) {
         addEl.classList.add("bg-danger")
 
     } else { addEl.classList.remove("bg-danger") }
@@ -36,7 +37,18 @@ lessEl.addEventListener("click", () => {
 resetEl.addEventListener("click", () => {
     theNumber = 0
     numberEl.innerHTML = `${theNumber}`
+    addEl.classList.remove("bg-danger")
+    lessEl.classList.add("disabled")
+    resetEl.classList.add("disabled")
+
 })
 
+function updateNumber() {
+    numberEl.innerHTML = `${theNumber}`
+    numberEl.classList.add("change")
+    setTimeout(() => {
+        numberEl.classList.remove("change")
+    }, 300)
+}
 
 

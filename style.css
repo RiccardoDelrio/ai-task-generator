@@ -1,0 +1,7 @@
+.number {
+    transition: transform 0.3s ease-in-out;
+}
+
+.number.change {
+    transform: scale(1.2);
+}
